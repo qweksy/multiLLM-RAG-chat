@@ -1,0 +1,16 @@
+[project]
+name = "project-r"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi==0.128.0",
+    "google-genai==1.60.0",
+    "openai>=3.14.1",
+    "pydantic==2.12.5",
+    "pydantic-settings==2.7.1",
+    "python-dotenv==1.2.1",
+    "sentence-transformers>=6.0.1",
+    "uvicorn==0.40.0",
+]

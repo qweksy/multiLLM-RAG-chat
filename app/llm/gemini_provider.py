@@ -4,9 +4,14 @@ from google.genai.errors import APIError
 from app.config import settings
 
 GEMINI_MODEL = "gemini-2.5-flash"
+
 _client = genai.Client(api_key=settings.gemini_api_key)
 
 def gen_answer(prompt: str) -> str:
+    """
+    Единственный интерфейс для работы напрямую с Gemini
+    """
+    
     try:
         response = _client.models.generate_content(
             model = GEMINI_MODEL,

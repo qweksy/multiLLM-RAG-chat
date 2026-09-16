@@ -1,8 +1,8 @@
 from fastapi import Body, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from app.config import settings
 from pydantic import BaseModel
 
+from app.config import settings
 from app.llm.gemini_provider import gen_answer
 
 app = FastAPI(title="project-R")
