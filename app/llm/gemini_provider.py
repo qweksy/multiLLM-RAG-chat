@@ -9,7 +9,7 @@ GEMINI_GENERATION_MODEL = "gemini-2.5-flash"
 GEMINI_EMBEDDING_MODEL = "models/text-embedding-004"
 
 class GeminiProvider(LLMProvider, EmbeddingProvider):
-    """Провайдер, который з акрывает интерфейс для генерации и эмбеддинги."""
+    """Провайдер, который закрывает интерфейс для генерации и эмбеддинги."""
     
     def __init__(self):
         self._client = genai.Client(api_key=settings.gemini_api_key)
