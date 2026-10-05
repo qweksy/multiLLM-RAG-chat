@@ -3,7 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from app.config import settings
-from app.llm.gemini_provider import gen_answer
+
+from app.llm.fabric import get_llm_provider, get_embedding_provider
 
 app = FastAPI(title="project-R")
 
@@ -25,7 +26,7 @@ def health() -> dict:
 @app.post("/chat", response_model=ChatResponse)
 def chat(prompt: str = Body(embed=True)) -> ChatResponse:
     try:
-        answer = gen_answer(prompt=prompt)
+        answer = get_llm_provider().generate_answer(prompt=prompt)
     except RuntimeError as e:
         raise HTTPException(status_code=502, detail=str(e)) from e
     return ChatResponse(answer=answer)

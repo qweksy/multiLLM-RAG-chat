@@ -3,11 +3,11 @@ from abc import ABC, abstractmethod
 class LLMProvider(ABC):
     """
     Абстракция над генерацией текста LLM. Все роутеры и сервисы работают только с этим интерфейсом.
-    Конкретный провайдер (LLM модель) подставляется через fabric.py и никогда не импортируется вне её.
+    Конкретный провайдер (LLM модель) подставляется через factory.py и никогда не импортируется вне её.
     """
     
     @abstractmethod
-    def gen_anwer(self, prompt: str) -> str:
+    def generate_answer(self, prompt: str) -> str:
         """Отправляет промпт в модель и возвращает строковый ответ."""
         
         raise NotImplementedError
@@ -16,12 +16,12 @@ class EmbeddingProvider(ABC):
     """
     Абстракция над вычислением эмбеддингов. Намеренно отделена от LLMProvider.
     Не каждый провайдер генерации текста умеет считать эмбеддинги.
-    Конкретный провайдер (модель для эмбеддингов) подставляется через fabric.py и никогда не импортируется вне её.
+    Конкретный провайдер (модель для эмбеддингов) подставляется через factory.py и никогда не импортируется вне её.
     """
     
     @property
     @abstractmethod
-    def model_name(self) -> str:
+    def embedding_model_name(self) -> str:
         """Идентификатор модели эмбеддингов. Сохраняется в documents.embedding_model"""
         
         raise NotImplementedError
